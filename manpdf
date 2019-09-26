@@ -1,0 +1,7 @@
+if [ $# -eq 0 ]
+	then
+		manpage=$(man -k . | awk '{print $1, $2}' | rofi -columns 1 -dmenu | awk '{print $1}')
+		man -Tpdf $manpage | zathura -&
+else
+	man -Tpdf $1 | zathura -&
+fi
